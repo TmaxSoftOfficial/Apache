@@ -1,0 +1,152 @@
+FROM centos:7
+# version 20.3
+
+#MAINTAINER MW1-4@tamx.co.kr
+
+# 0) Install necessary packages through yum in CentOS
+RUN set -eux; \
+    yum update -y; \
+    yum install -y \
+        make \
+        gcc \
+        gcc-c++ \
+        wget \
+        perl \
+        expat-devel \
+        ca-certificates \
+    ; \rm -rf /var/lib/apt/lists/*
+
+# 1) Httpd env set
+ENV DOWNLOAD_PATH https://github.com/TmaxSoftOfficial/Apache
+ENV LIBRARY_DOWNLOAD_PATH $DOWNLOAD_PATH/lib
+ENV SOURCE_PATH /usr/local/src
+ENV HTTPD_PREFIX /usr/local/apache2
+ENV HTTPD_CONF_PATH $HTTPD_PREFIX/conf
+#ENV SHELL_PATH /home
+
+ENV DOCKERFILE_VERSION v20.3
+ENV APR_VERSION 1.6.5
+ENV APR_UTIL_VERSION 1.6.1
+ENV PCRE_VERSION 8.43
+ENV OPENSSL_VERSION 1.1.1d
+ENV APACHE_MAJOR_VERSION 2.4
+ENV APACHE_MINOR_VERSION 41
+
+ENV HTTP_PORT 80
+ENV HTTPS_PORT 443
+
+# environment PATH set
+ENV PATH $HTTPD_PREFIX:$HTTPD_PREFIX/bin:$PATH
+        
+# 2) library build
+# 2_1) apr  
+RUN set -eux; \
+    \
+    cd $SOURCE_PATH; \
+    wget $LIBRARY_DOWNLOAD_PATH/apr-${APR_VERSION}.tar.gz; \
+    tar -zxvf apr-${APR_VERSION}.tar.gz; \
+    cd apr-${APR_VERSION}; \
+    ./configure --prefix=/usr/local/apr; \
+    make; \
+    make install
+   
+# 2_2) apr-util
+RUN set -eux; \
+    cd $SOURCE_PATH; \ 
+    wget $LIBRARY_DOWNLOAD_PATH/apr-util-${APR_UTIL_VERSION}.tar.gz; \
+    tar -zxvf apr-util-${APR_UTIL_VERSION}.tar.gz; \
+    cd apr-util-${APR_UTIL_VERSION}; \
+    ./configure --with-apr=/usr/local/apr; \
+    make; \
+    make install
+    
+# 2_3) pcre
+RUN set -eux; \
+    cd $SOURCE_PATH; \  
+    wget $LIBRARY_DOWNLOAD_PATH/pcre-${PCRE_VERSION}.tar.gz; \
+    tar -zxvf pcre-${PCRE_VERSION}.tar.gz; \
+    cd pcre-${PCRE_VERSION}; \
+    ./configure --prefix=/usr/local/pcre; \
+    make; \
+    make install
+    
+# 2_4) openssl
+RUN set -eux; \
+    cd $SOURCE_PATH; \ 
+    wget $LIBRARY_DOWNLOAD_PATH/openssl-${OPENSSL_VERSION}.tar.gz; \
+    tar -zxvf openssl-${OPENSSL_VERSION}.tar.gz; \
+    cd openssl-${OPENSSL_VERSION}; \
+    ./config --prefix=/usr/local/ssl; \
+    # source-based compilation and generate installation binaries
+    make; \
+    make install; \
+    echo /usr/local/ssl/lib >> /etc/ld.so.conf; \
+    /sbin/ldconfig
+    
+# 2_5) httpd
+RUN set -eux; \
+    cd $SOURCE_PATH; \  
+    wget $LIBRARY_DOWNLOAD_PATH/httpd-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}.tar.gz; \
+    tar -zxvf httpd-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}.tar.gz; \
+    cd httpd-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}; \
+    ./configure \
+        --prefix=$HTTPD_PREFIX \
+        --enable-mods-shared=all \
+        --enable-ssl=shared \
+        --with-pcre=/usr/local/pcre \
+        --with-ssl=/usr/local/ssl \
+    ; \
+    # source-based compilation and generate installation binaries
+    make; \
+    make install
+    
+# 3) download ssl sample key, conf file, etc.
+RUN set -eux;\
+    \
+    cd $SOURCE_PATH; \
+    wget $DOWNLOAD_PATH/apache_${APACHE_MAJOR_VERSION}/apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}.tar.gz; \
+    tar -zxvf apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}.tar.gz
+   
+# 3-1) copy sample_key to use OpenSSL and shell script to set password for ssl sample_key
+RUN set -eux;\
+    cd $SOURCE_PATH/apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}; \
+    mv ./ssl/server.crt $HTTPD_CONF_PATH/; \
+    mv ./ssl/server.key $HTTPD_CONF_PATH/; \
+    mv ./ssl/ssl_passwd.sh $HTTPD_PREFIX/
+    # comment out 3-1) if you do not want to use SSL
+      
+# 3-2) copy conf file
+RUN set -eux;\
+    cd $SOURCE_PATH/apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}; \
+    mv ./conf/httpd.conf $HTTPD_CONF_PATH/httpd.conf; \
+    mv ./conf/httpd-ssl.conf $HTTPD_CONF_PATH/extra/httpd-ssl.conf; \
+    mv ./conf/httpd-vhosts.conf $HTTPD_CONF_PATH/extra/httpd-vhosts.conf
+    #DocumentRoot in httpd.conf : "/usr/local/apache2/htdocs"
+    
+# 3-3) copy start.sh ro run Apache
+RUN set -eux;\
+    cd $SOURCE_PATH/apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}; \
+    mv start.sh $HTTPD_PREFIX/
+
+# 3-4) copy Apache license
+RUN set -eux;\
+    cd $SOURCE_PATH/apache-${APACHE_MAJOR_VERSION}.${APACHE_MINOR_VERSION}_${DOCKERFILE_VERSION}; \
+    cp -arpf ./license/ $HTTPD_PREFIX; \
+    \
+    rm -rf $SOURCE_PATH/*
+
+RUN set -eux; \
+    # permission settings
+    chmod 755 $HTTPD_PREFIX/ssl_passwd.sh; \
+    chmod 755 $HTTPD_PREFIX/start.sh; \ 
+    \
+    #apache version check
+    httpd -v 
+
+#http port number: 80 https port number : 443
+EXPOSE 80 443
+
+#run Apache 
+CMD start.sh
+
+
