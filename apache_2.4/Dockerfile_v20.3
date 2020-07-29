@@ -17,7 +17,7 @@ RUN set -eux; \
     ; \rm -rf /var/lib/apt/lists/*
 
 # 1) Httpd env set
-ENV DOWNLOAD_PATH https://github.com/TmaxSoftOfficial/Apache
+ENV DOWNLOAD_PATH https://github.com/TmaxSoftOfficial/Apache/raw/master
 ENV LIBRARY_DOWNLOAD_PATH $DOWNLOAD_PATH/lib
 ENV SOURCE_PATH /usr/local/src
 ENV HTTPD_PREFIX /usr/local/apache2
