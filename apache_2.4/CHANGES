@@ -1,0 +1,103 @@
+=======
+CHANGES
+=======
+
+* v20.3 (2020.07.28)
+  * Delete comments in Korean and Add comments in Englis.
+    * developer
+      * MW1-4
+    * Apache 
+      * version) 2.4.41 (19.08.12 release)
+      * file) httpd-2.4.41.tar.gz
+      * ref) http://archive.apache.org/dist/httpd/httpd-2.4.41.tar.gz
+    * apr
+      * version) 1.6.5
+      * file) apr-1.6.5.tar.gz
+      * ref) http://archive.apache.org/dist/apr/apr-1.6.5.tar.gz
+    * apr-util
+      * version) 1.6.1
+      * file) apr-util-1.6.1
+      * ref)  http://archive.apache.org/dist/apr/apt-util-1.6.1.tar.gz
+    * pcre
+      * version) 8.43
+      * file) pcre-8.43
+      * ref) http://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
+    * openssl
+      * version) 1.1.1d
+      * file) openssl-1.1.1d
+      * ref) http://www.openssl.org/source/old/1.1.1/openssl-1.1.1d.tar.gz
+
+* v20.2 (2020.04.28)
+  * Delete comments in Korean and Add comments in Englis.
+    * developer
+      * MW1-4
+    * Apache 
+      * version) 2.4.41 (19.08.12 release)
+      * file) httpd-2.4.41.tar.gz
+      * ref) http://archive.apache.org/dist/httpd/httpd-2.4.41.tar.gz
+    * apr
+      * version) 1.6.5
+      * file) apr-1.6.5.tar.gz
+      * ref) http://archive.apache.org/dist/apr/apr-1.6.5.tar.gz
+    * apr-util
+      * version) 1.6.1
+      * file) apr-util-1.6.1
+      * ref)  http://archive.apache.org/dist/apr/apt-util-1.6.1.tar.gz
+    * pcre
+      * version) 8.43
+      * file) pcre-8.43
+      * ref) http://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
+    * openssl
+      * version) 1.1.1d
+      * file) openssl-1.1.1d
+      * ref) http://www.openssl.org/source/old/1.1.1/openssl-1.1.1d.tar.gz
+
+* v20.1 (2020.04.22)
+  * Update apr library version from 1.7.0 to 1.6.5.
+    * developer
+      * MW1-4
+    * Apache 
+      * version) 2.4.41 (19.08.12 release)
+      * file) httpd-2.4.41.tar.gz
+      * ref) http://archive.apache.org/dist/httpd/httpd-2.4.41.tar.gz
+    * apr
+      * version) 1.6.5
+      * file) apr-1.6.5.tar.gz
+      * ref) http://archive.apache.org/dist/apr/apr-1.6.5.tar.gz
+    * apr-util
+      * version) 1.6.1
+      * file) apr-util-1.6.1
+      * ref)  http://archive.apache.org/dist/apr/apt-util-1.6.1.tar.gz
+    * pcre
+      * version) 8.43
+      * file) pcre-8.43
+      * ref) http://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
+    * openssl
+      * version) 1.1.1d
+      * file) openssl-1.1.1d
+      * ref) http://www.openssl.org/source/old/1.1.1/openssl-1.1.1d.tar.gz
+  
+* v20.0 (2020.04.16)
+  * Create a Dockerfile for Apache image.
+    * developer
+      * MW1-4
+    * Apache 
+      * version) 2.4.41 (19.08.12 release)
+      * file) httpd-2.4.41.tar.gz
+      * ref) http://archive.apache.org/dist/httpd/httpd-2.4.41.tar.gz
+    * apr
+      * version) 1.7.0
+      * file) apr-1.7.0.tar.gz
+      * ref) http://archive.apache.org/dist/apr/apr-1.7.0.tar.gz
+    * apr-util
+      * version) 1.6.1
+      * file) apr-util-1.6.1
+      * ref)  http://archive.apache.org/dist/apr/apt-util-1.6.1.tar.gz
+    * pcre
+      * version) 8.43
+      * file) pcre-8.43
+      * ref) http://ftp.pcre.org/pub/pcre/pcre-8.43.tar.gz
+    * openssl
+      * version) 1.1.1d
+      * file) openssl-1.1.1d
+      * ref) http://www.openssl.org/source/old/1.1.1/openssl-1.1.1d.tar.gz
