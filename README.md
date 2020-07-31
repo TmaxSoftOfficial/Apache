@@ -6,12 +6,12 @@ This Apache docker file is for HyperFrame Open Edition.
 
 Docker 19.03.12 (Workspace version, recommended)
 
-### Set up Info
+### Requirements
 
 1) OS : CentOS 7
 2) Apache : Apache 2.4.X
 
-### Directory layout                                                         
+### Directory Structure                                                         
 
 ```bash                                                                     
 ${pwd}                                                                       
@@ -19,7 +19,7 @@ ${pwd}
 |   |- Dockerfile_list               # Dockerfile list directory
 |   |   |-<dockerfile_version> ...       # Dockerfile version
 |   |   |   |- Dockerfile                
-|   |- conf                          # Configuration files  
+|   |- conf                          # Configuration directory  
 |   |   |- httpd.conf                    # Main configuration file
 |   |   |- httpd-ssl.conf                # Apache configuration file that provides the functionality of secure (SSL/TLS) connections
 |   |   |- httpd-vhost.conf              # Apache configuration file that manages virtual hosts
@@ -35,7 +35,7 @@ ${pwd}
 |- README.md                                                                    
 ```                                                                         
 
-### Installing:
+### Installing Steps:
 
 #### 1. Download Dockerfile.
 
