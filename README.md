@@ -1,10 +1,10 @@
 # HyperFrameOE-Apache
 
-This is a group of Apache Docker files with versions for HyperFrame Open Edition.
+This Apache docker file is for HyperFrame Open Edition.
 
 ### Prerequisites
 
-Docker 19.03.12 (This is a workspace's version, other versions might be compatiable with this.)
+Docker 19.03.12 (Workspace version, recommended)
 
 ### Set up Info
 
@@ -19,16 +19,16 @@ ${pwd}
 |   |- Dockerfile_list               # Dockerfile list directory
 |   |   |-<dockerfile_version> ...       # Dockerfile version
 |   |   |   |- Dockerfile                
-|   |- conf                          # conf directory  
-|   |   |- httpd.conf                    # The main Configuration File 
-|   |   |- httpd-ssl.conf                # Apache configuration file that provide the functionality of Secure (SSL/TLS) connections
-|   |   |- httpd-vhost.conf              # Apache configuration file that manage Virtual hosts
+|   |- conf                          # Configuration files  
+|   |   |- httpd.conf                    # Main configuration file
+|   |   |- httpd-ssl.conf                # Apache configuration file that provides the functionality of secure (SSL/TLS) connections
+|   |   |- httpd-vhost.conf              # Apache configuration file that manages virtual hosts
 |   |- license                       # license directory  
-|   |   |- LICENSE                       # Apache License                                  
+|   |   |- LICENSE                       # Apache license                                  
 |   |- ssl                           # ssl directory  
-|   |   |- server.crt                    # Self-signed sample Certificate
-|   |   |- server.key                    # Private sample key for ssl certificate                         
-|   |   |- ssl_passwd.sh                 # Shell script for setting password when using sample ssl key
+|   |   |- server.crt                    # Self-signed sample certificate
+|   |   |- server.key                    # Private sample key for SSL certificate
+|   |   |- ssl_passwd.sh                 # Shell script for setting passwords for sample SSL keys
 |   |- CHANGES                                                               
 |   |- [latest]Dockerfile                    
 |   |- start.sh
@@ -37,19 +37,19 @@ ${pwd}
 
 ### Installing:
 
-#### 1. Download a Dockerfile you want.
+#### 1. Download Dockerfile.
 
-#### 2. If you want to modify the configuration, change the file below the conf directory.
+#### 2. To change the configuration, modify files under the conf directory.
 
-#### 3. Place 'Dockerfile', 'conf' directory, 'start.sh', 'license' directory, and 'ssl' directory in the same path.
+#### 3. Place the Dockerfile and start.sh files and the conf, license, and ssl directories in the same path.
 
-#### 4. Build an Docker Image.
+#### 4. Build a Docker Image.
 
 ```bash
 $ docker build -t <create image_name>:<image_version> .
 ```
 
-#### 5. Generate a Container from Image.
+#### 5. Generate a Container from the Image.
 
 ```bash
 $ docker run -p 8080:80 -p 443:443 <image_name>:<image_version>
@@ -57,7 +57,7 @@ $ docker run -p 8080:80 -p 443:443 <image_name>:<image_version>
 
 ### License
 
-This project is licensed under the Apache-2.0
+Projects are licensed under the Apache 2.0 license.
 
 ### Version History
 
