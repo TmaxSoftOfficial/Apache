@@ -59,3 +59,6 @@ $ docker run -p 8080:80 -p 443:443 <image_name>:<image_version>
 
 This project is licensed under the Apache-2.0
 
+### Version History
+
+HyperFrame OE, Apache 2.4.41 (latest)
