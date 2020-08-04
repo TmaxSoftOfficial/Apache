@@ -23,7 +23,7 @@ ENV HTTPD_CONF_PATH $HTTPD_PREFIX/conf
 ENV SSL_PATH $HTTPD_CONF_PATH
 ENV LICENSE_PATH $HTTPD_PREFIX/license
 
-ENV LIBRARY_DOWNLOAD_PATH https://github.com/TmaxSoftOfficial/Apache/raw/master/lib
+ENV LIBRARY_DOWNLOAD_PATH https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache/raw/master/lib
 
 ENV APR_VERSION 1.6.5
 ENV APR_UTIL_VERSION 1.6.1
