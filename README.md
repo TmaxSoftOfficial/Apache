@@ -57,7 +57,7 @@ $ docker run -p 8080:80 -p 443:443 <image_name>:<image_version>
 
 ### License
 
-Projects are licensed under the Apache 2.0 license.
+Projects are licensed under the Apache 2.0 license. See the [LICENSE](https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache/blob/master/apache_2.4/license/license.dat) file.
 
 ### Version History
 
