@@ -8,8 +8,8 @@ Docker 19.03.12 (Workspace version, recommended)
 
 ### Requirements
 
-1) OS : CentOS 7
-2) Apache : Apache 2.4.X
+#### 1) OS : CentOS 7
+#### 2) Apache : Apache 2.4.X
 
 ### Directory Structure                                                         
 
