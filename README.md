@@ -37,23 +37,54 @@ ${pwd}
 
 ### Installing Steps:
 
-#### 1. Download Dockerfile.
+### You can choose one of the following two installation methods.
 
-#### 2. To change the configuration, modify files under the conf directory.
+### Installation Method 1 (using Dockerfile and binary after downloading them from GitHub)
 
-#### 3. Place the Dockerfile and start.sh files and the conf, license, and ssl directories in the same path.
+#### 1. Access the following site: https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache.
 
-#### 4. Build a Docker Image.
+#### 2. Download the Dockerfile and binary.
 
+#### 3. To change the configuration, modify files under the conf directory.
+
+#### 4. Place the Dockerfile and start.sh files and the conf, license, and ssl directories in the same path.
+
+#### 5. Build a Docker Image.
 ```bash
 $ docker build -t <create image_name>:<image_version> .
 ```
 
-#### 5. Generate a Container from the Image.
-
+#### 6. Generate a Container from the Image.
 ```bash
-$ docker run -p 8080:80 -p 443:443 <image_name>:<image_version>
+$ docker run -d -p 8080:80 -p 443:443 <image_name>:<image_version>
 ```
+
+
+ 
+
+### Installation Method 2 (using Image of Docker Hub)
+
+#### 1. Search for the Image.
+- It can be searched from Docker Hub (https://hub.docker.com/repository/docker/tmaxsoftofficial/hyperframeoe-apache) or with the following docker search command.
+```bash 
+$ docker search hyperframeoe-apache
+```
+
+#### 2. Pull the Image.
+```bash
+$ docker pull tmaxsoftofficial/hyperframeoe-apache:latest
+```
+
+#### 3. Build a Docker Image.
+```bash
+$ docker build -t tmaxsoftofficial/hyperframeoe-apache:latest .
+```
+
+#### 4. Generate a Container from the Image.
+```bash
+$ docker run -d -p 8080:80 -p 443:443 tmaxsoftofficial/hyperframeoe-apache:latest
+```
+
 
 ### License
 
