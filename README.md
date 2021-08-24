@@ -1,4 +1,4 @@
-# HyperFrameOE-Apache
+# HyperFrameOE-Apache-Image
 
 This Apache docker file is for HyperFrame Open Edition.
 
