@@ -41,7 +41,7 @@ ${pwd}
 
 ### Method 1. Using Dockerfile and binary downloaded from GitHub
 
-#### 1. Go to the following site: https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache.
+#### 1. Go to the following site: https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache-Image.
 
 #### 2. Download the Dockerfile and binary.
 
