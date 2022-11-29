@@ -4,7 +4,7 @@ This Apache docker file is for HyperFrame Open Edition.
 
 ## Prerequisites
 
-Docker 19.03.12 (Workspace version, recommended)
+Docker 20.10.18 (Workspace version, recommended)
 
 ## Requirements
 
@@ -32,6 +32,16 @@ ${pwd}
 |   |- CHANGES                                                               
 |   |- [latest]Dockerfile                    
 |   |- start.sh
+|- lib
+|   |- apr-1.6.5.tar.gz
+|   |- apr-1.7.0.tar.gz
+|   |- apr-util-1.6.1.tar.gz
+|   |- httpd-2.4.41.tar.gz
+|   |- httpd-2.4.48.tar.gz
+|   |- openssl-1.1.1d.tar.gz
+|   |- openssl-1.1.1s.tar.gz
+|   |- pcre-8.43.tar.gz
+|   |- pcre-8.45.tar.gz
 |- README.md                                                                    
 ```                                                                         
 
@@ -41,7 +51,7 @@ ${pwd}
 
 ### Method 1. Using Dockerfile and binary downloaded from GitHub
 
-#### 1. Go to the following site: https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache-Image.
+#### 1. Go to the following site: https://github.com/TmaxSoftOfficial/HyperFrame-Apache-Image.
 
 #### 2. Download the Dockerfile and binary.
 
@@ -88,11 +98,11 @@ $ docker run -d -p 8080:80 -p 443:443 tmaxsoftofficial/hyperframeoe-apache:lates
 
 ## License
 
-Projects are licensed under the Apache 2.0 license. See the [License](https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache/blob/master/apache_2.4/license/license.dat) file.
+Projects are licensed under the Apache 2.0 license. See the [License](https://github.com/TmaxSoftOfficial/HyperFrame-Apache-Image/blob/master/apache_2.4/license/license.dat) file.
 
 ## Version History
 
-[HyperFrame OE, Apache 2.4.41](https://github.com/TmaxSoftOfficial/HyperFrameOE-Apache/blob/master/apache_2.4/Dockerfile "dockerfile link") (latest)
+[HyperFrame OE, Apache 2.4.48](https://github.com/TmaxSoftOfficial/HyperFrame-Apache-Image/blob/master/apache_2.4/Dockerfile "dockerfile link") (latest)
 
 ## HyperFrameOE Service Level
 [HyperFrameOE Service Level](https://github.com/TmaxSoftOfficial/HyperFrameOE-About/blob/master/ServiceLevel.md)
